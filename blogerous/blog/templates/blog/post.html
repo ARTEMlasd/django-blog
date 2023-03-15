@@ -1,0 +1,136 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <div class="posts">
+        <p class="titles">{{post.title}}</p>
+    <div class="post-blocks">
+        <div class="ar">
+        <p class="texts">{{ post.text}}</p>
+    </div>
+        <div class="rights">
+
+
+
+            {% if lk%}
+            <p class="likes">
+                <span class="material-symbols-outlined">
+                    favorite 
+                    </span>{{likes_amount}}</p>
+
+             {% else%}
+            <p class="likes1">
+                <span class="material-symbols-outlined">
+                    <a href="{% url 'likes' user.id post.id %}">favorite</a>
+                    </span>
+             
+                 {% endif %}
+                 <p class="views">
+                 <span class="material-symbols-outlined">
+                     <a href="">public</a>
+                 </span>{{ post.views }}</p>
+                 
+        </div>
+        <div class="comment1">
+        {% for comment in  comments %}
+           
+            
+                {{ comment.text }}
+           
+        {% endfor %}
+    </div>
+        <div class="coment">
+            <form action="{% url 'comment' post.id %}" method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="btn11">Добавить</button>
+            </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+
+<style>
+    .comment1{
+        height: 200px;
+        width: 20%;
+        overflow: auto;
+    }
+   
+    .btn11 {
+        background-color: rgb(255, 0, 0);
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        width: 85.9%;
+        opacity: 0.9;
+        }
+    .likes1 >  .material-symbols-outlined > a{
+    color: black;
+    }
+    .likes >  .material-symbols-outlined {
+        color: red;
+    }
+    .material-symbols-outlined{
+        text-decoration: none;
+    }
+    .posts {
+
+        border: 3px solid darksalmon;
+        width: 40%;
+        margin-left: 45%;
+        height: 81%;
+        
+    
+    }
+    .titles{
+        
+        flex-direction: column;
+        align-items: center;
+        font-size: 35px;
+        margin: 0 0 20px 0;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .post-blocks{
+        position:relative;
+        height: 100%;
+    }
+    .rights{
+        flex-direction: column;
+       top: 400px;
+        display: flex;
+        
+        position: absolute;
+        bottom: 320px;
+        right: 0;
+    }
+    .right >  .material-symbols-outlined > a{
+        font-size: 100px;
+    }
+    .texts{
+        display: flex;
+       font-size: 20px;
+       font-family: Arial, Helvetica, sans-serif;
+       margin-left: 3%;
+    }
+
+    .lefts{
+        display: flex;
+        position: absolute;
+        bottom: 320px;
+        left: 10px;
+
+    }
+    input[type=text]{
+  width: 80%;
+  padding: 15px;
+  margin: 2px 0 10px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+</style>
+{% endblock content %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+  <div class="p15" >
+    <span class="material-symbols-outlined">
+     <a href="{% url 'register-form' %}">arrow_back_ios</a> 
+    </div>
+    </span>
+<div class="bg-img">
+    <form action="{% url 'check-come-in' %}" method="POST" class="container">
+        {% csrf_token %}
+      <h1>Войти</h1>
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Введите электронную почту" name="email" required>
+
+      <label for="email"><b>Password</b></label>
+      <input type="text" placeholder="введите пароль" name="password3" required>
+
+      <button type="submit" class="btn">Авторизация</button>
+    </form>
+  </div>
+</body>
+</html>
+<style>
+ 
+ .p15 > .material-symbols-outlined >a{
+  text-decoration: none;
+  color: black;
+  font-size: 30px;
+}
+  .container {
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 500px;
+  background-color: rgb(255, 255, 255);
+}
+
+/* Поля ввода в полную ширину */
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Стили для кнопки подтверждения */
+.btn {
+  background-color: cornflowerblue;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+</style>
